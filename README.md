@@ -1,2 +1,2 @@
 # docker-php7.4-fpm-base
-Docker abstract image for php7.4-fpm
+Base php7.4-fpm docker image
