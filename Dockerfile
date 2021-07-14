@@ -16,7 +16,9 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install \
+RUN docker-php-ext-configure \
+        zip && \
+    docker-php-ext-install --jobs "$(nproc)" \
         bcmath \
         exif \
         gd \
@@ -24,11 +26,6 @@ RUN docker-php-ext-install \
         mbstring \
         pcntl \
         pdo_mysql \
-        zip && \
-    docker-php-ext-configure \
-        zip && \
-    docker-php-ext-install --jobs "$(nproc)" \
-        intl \
         zip && \
     pecl install \
         apcu-${APCU_VERSION} \
