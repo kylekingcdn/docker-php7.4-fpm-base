@@ -31,7 +31,10 @@ RUN docker-php-ext-install \
         intl \
         zip && \
     pecl install \
+        apcu-${APCU_VERSION} \
         redis && \
     pecl clear-cache && \
     docker-php-ext-enable \
+        apcu \
+        opcache \
         redis
