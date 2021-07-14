@@ -29,7 +29,8 @@ RUN docker-php-ext-install \
         zip && \
     docker-php-ext-install --jobs "$(nproc)" \
         intl \
-        zip
-
-# Install PHP extension for redis
-RUN pecl install redis && docker-php-ext-enable redis
+        zip && \
+    pecl install \
+        redis && \
+    docker-php-ext-enable \
+        redis
